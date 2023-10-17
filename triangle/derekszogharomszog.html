@@ -16,20 +16,20 @@
         <input id="B" type="number" class="form-control">
         <label for="C">C oldal</label>
         <input id="C" type="number" class="form-control">
-        <input type="button" id="kuld" class="btn btn-success mt-3" value="Számol">
-    </form>    
-
+        <input type="button" id="kuld" class="btn btn-success mt-3" value="Számol" onclick="szamolas()">
+    </form>
+    <p id="szoveg"></p>     
     <script>
-        var A = document.getElementById("A");
-        var B = document.getElementById("B");
-        var C = document.getElementById("C");
-        if(A+B > C && A+C > B && B+C > A){
-            document.write("Derékszögű háromszög");
-        }else{
-            document.write("Nem derékszögű háromszög");
+        function szamolas(){
+        var A = document.getElementById("A").value;
+        var B = document.getElementById("B").value;
+        var C = document.getElementById("C").value;
+            if((A+A) + (B+B) == (C+C)){
+                document.getElementById("szoveg").innerHTML="Derékszögű háromszög";
+            }else{
+                document.getElementById("szoveg").innerHTML="Nem derékszögű háromszög";
+            }
         }
-
-
 
     </script>
 </div>
