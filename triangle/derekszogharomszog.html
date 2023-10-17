@@ -24,7 +24,10 @@
         var A = document.getElementById("A").value;
         var B = document.getElementById("B").value;
         var C = document.getElementById("C").value;
-            if((A+A) + (B+B) == (C+C)){
+        
+            if(A == "" || B == "" || C == ""){
+                document.getElementById("szoveg").innerHTML="Nem adta meg valamelyik adatot";
+            }else if((A+A) + (B+B) == (C+C)){
                 document.getElementById("szoveg").innerHTML="Derékszögű háromszög";
             }else{
                 document.getElementById("szoveg").innerHTML="Nem derékszögű háromszög";
