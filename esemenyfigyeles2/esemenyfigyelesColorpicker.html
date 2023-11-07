@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Válassz háttérszínt</h1>
+    <input type="color" id="colorPicker">
+    <script>
+        const colorpicker = document.getElementById("colorPicker");
+        colorpicker.addEventListener("input", change)
+        function change(){
+            document.body.style.backgroundColor = colorpicker.value
+
+        }
+       
+    </script>
+</body>
+</html>
