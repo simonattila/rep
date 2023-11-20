@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Időjárás</title>
+</head>
+<body>
+    <form>
+        <h3>Városok hőmérséklete</h3>
+        <p id="temperature"></p>
+        <input type="text" id="varos">
+        <input type="button" value="Keresés" onclick="keres()">
+    </form>
+    
+
+    <script>
+    function keres() {
+        var varos = document.getElementById('varos').value;
+        var apiUrl = 'https://wttr.in/'+varos+'?format=%t';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', apiUrl, true);
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var temperature = xhr.responseText;
+                document.getElementById('temperature').textContent = varos+' hőmérséklete: ' + temperature;
+            } else {
+                document.getElementById('temperature').textContent = 'Nem sikerült lekérni a hőmérsékletet.';
+            }
+        };
+
+        xhr.send();
+    }
+    </script>
+</body>
+</html>
