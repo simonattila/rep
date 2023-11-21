@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Időjárás</title>
+</head>
+<body>
+    
+    <p id="datas"></p>
+        
+    <script>
+        var apiUrl = 'https://jsonplaceholder.typicode.com/users/1';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', apiUrl, true);
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var userdata = xhr.responseText;
+                document.getElementById('datas').textContent = userdata;
+            } else {
+                document.getElementById('datas').textContent = 'Nem sikerült lekérni a hőmérsékletet.';
+            }
+        };
+
+        xhr.send();
+
+    </script>
+</body>
+</html>
