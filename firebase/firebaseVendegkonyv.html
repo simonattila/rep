@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Vendégkönyv</title>
+</head>
+<body>
+    <form class="w-25 mt-4" id="form">
+    <h3>Vendégkönyv</h3>
+    <label class="form-label" for="nev">Név</label>
+    <input type="text" placeholder="Add meg a neved" class="form-control" id="nev" name="nev"/>
+    <br>
+    <label class="form-label" for="uzenet">Üzenet</label>
+    <input type="text" placeholder="Írd be az üzeneted" class="form-control" id="uzenet" name="uzenet"/>
+    <br>
+    <input class="btn btn-primary"type="submit" id="gomb" value="Üzenet elküldése" class="form control"/>
+    </form>
+
+    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+        apiKey: "AIzaSyA72YEiLeX5vZb8ZcVtTem1mg4aUIfBTQQ",
+        authDomain: "vendegkonyv-e8f06.firebaseapp.com",
+        projectId: "vendegkonyv-e8f06",
+        storageBucket: "vendegkonyv-e8f06.appspot.com",
+        messagingSenderId: "706166223480",
+        appId: "1:706166223480:web:30b9eef5f775ece22eb38d"
+        };    
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        document.getElementById('form').addEventListener('submit',function (e) {
+            e.preventDefault();
+            const name = document.getElementById('nev').value;
+            const message = document.getElementById('uzenet').value;
+            db.collection("Vendegkonyv").add({
+                        nev: name,
+                        uzenet: message
+                    })
+        }
+
+        );
+    </script>
+
+</body>
+</html>
